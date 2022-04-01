@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    min-height: 100vh;
+    background: #fff;
+}
+.navigation {
+    position: fixed;
+    top: 115px;
+    left: 20px;
+    bottom: 20px;
+    width: 75px;
+    border-radius: 10px;
+    box-sizing: initial;
+    border-left: 5px solid cornflowerblue;
+    background: cornflowerblue;
+    transition: width 0.5s;
+    overflow-x: hidden;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.navigation.active{
+    width: 250px;
+}
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 19px;
+}
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.navigation ul li .title {
+    transition: all 0.1s ease-out;
+    font-weight: 400;
+}
+.navigation ul li:hover .title {
+    transform: scale(1.1);
+    transition: all 0.1s ease-out;
+}
+.navigation ul li.active {
+    background: #eceef0;
+}
+.navigation ul li.active:hover .title  {
+    transform: none;
+    font-weight: 300;
+}
+.navigation ul li b:nth-child(1) {
+    position: absolute;
+    top: -20px;
+    height: 20px;
+    width: 100%;
+    background: #eceef0;
+    display: none;
+}
+.navigation ul li b:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 10px;
+    background: cornflowerblue;
+}
+.navigation ul li b:nth-child(2) {
+    position: absolute;
+    bottom: -20px;
+    height: 20px;
+    width: 100%;
+    background: #eceef0;
+    display: none;
+}
+.navigation ul li b:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 10px;
+    background: cornflowerblue;
+}
+.navigation ul li.active b:nth-child(1),
+.navigation ul li.active b:nth-child(2) {
+    display: block;
+}
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
+.navigation ul li.active a{
+    color: #333;
+}
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 53px;
+    line-height: 58px;
+    text-align: center;
+}
+.navigation ul li a .icon {
+    font-size: 1.2em;
+}
+.navigation ul li a .title{
+    position: relative;
+    display: block;
+    padding-left: 14px;
+    height: 57px;
+    line-height: 57px;
+    white-space: normal;
+}
+.toggle{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 75px;
+    background: #79b58b;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 0.3s ease-out;
+}
+.fakeToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 75px;
+    border-radius: 10px 0 0 10px;
+    z-index: 2;
+}
+.toggle.active{
+    background: cornflowerblue;
+    transition: all 0.3s ease-out;
+}
+.toggle .anticon{
+    position: absolute;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+    display:none;
+    transition: all 0.6s ease-out;
+}
+.toggle .anticon.open,
+.toggle.active .anticon.close{
+    display:block;
+    transition: all 0.6s ease-out;
+}
+.toggle .anticon.close,
+.toggle.active .anticon.open{
+    display:none;
+    transition: all 0.6s ease-out;
+}
+.header {
+    background: darkseagreen;
+    border-radius: 10px 10px 10px 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    height: 75px;
+    z-index: 1;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.mainDiv {
+    transition: padding-left 0.5s;
+    padding-left: 295px;
+    min-height: calc(100vh - 125px);
+    width: 100%;
+    margin-top: 115px;
+    padding-right: 20px;
+}
+.mainDiv.accordion {
+    transition: padding-left 0.5s;
+    padding-left: 120px;
+}
+.whiteDiv {
+    min-height: 380px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.ant-tag {
+    width: 120px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+}
+.nameOne {
+    font-size: 34px;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 1px #878787;
+    font-family: 'Nunito', sans-serif;
+}
+.nameTwo {
+    font-size: 34px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 1px #878787;
+    font-family: 'Nunito', sans-serif;
+}
+.profile{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 75px;
+    background: #79b58b;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 0.3s ease-out;
+}
+.profile .anticon-user{
+    color: #fff;
+    font-size: 27px;
+}
+.label {
+    font-size: 12.5px;
+    color: #558d66;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+}
+.nameDiv {
+    color: #427ce5;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    font-family: 'Raleway', sans-serif;
+}
+.ant-table-thead > tr > th {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+.ant-table-tbody > tr > td {
+    font-family: 'Nunito', sans-serif;
+}
+
+.ant-statistic-content {
+    font-size: 21px;
+}
+.ant-btn-primary {
+    border-color: #79b58b;
+    background: #79b58b;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+    border-color: #8fbc8f;
+    background: #8fbc8f;
+}
+.ant-btn {
+    border-radius: 6px;
+    text-shadow: 1px 1px 1px #878787;
+    font-weight: 600;
+    font-size: 13px;
+}
+.ant-btn-link {
+    font-size: 14px;
+    font-weight: 400;
+    text-shadow: none;
+}
+.ant-input,
+.ant-picker,
+.ant-input-affix-wrapper,
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #f7f7f7;
+    border: 1px solid #c3ddc3;
+    border-radius: 6px;
+}
+.ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+    border-radius: 0 7px 7px 0;
+}
