@@ -128,7 +128,12 @@ body{
     padding-left: 14px;
     height: 57px;
     line-height: 57px;
+    font-size: 14.5px;
     white-space: normal;
+    font-family: 'Nunito', sans-serif;
+}
+.ant-popover {
+    font-family: 'Nunito', sans-serif;
 }
 .toggle{
     position: fixed;
@@ -215,8 +220,15 @@ body{
     width: 120px;
     text-align: center;
     border-radius: 4px;
-    font-size: 10.5px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+}
+.phone {
+    font-size: 27px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 1px 1px 1px #878787;
     font-family: 'Nunito', sans-serif;
 }
 .nameOne {
@@ -283,6 +295,14 @@ body{
 .ant-btn-primary:hover, .ant-btn-primary:focus {
     border-color: #8fbc8f;
     background: #8fbc8f;
+}
+.ant-btn-dangerous.ant-btn-primary {
+    background: #e96865;
+    border-color: #e96865;
+}
+.ant-btn-dangerous.ant-btn-primary:hover, .ant-btn-dangerous.ant-btn-primary:focus {
+    background: #ff7875;
+    border-color: #ff7875;
 }
 .ant-btn {
     border-radius: 6px;

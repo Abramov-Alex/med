@@ -80,11 +80,11 @@ const columns = [
                 {tags.map(tag => {
                     let color = tag.length > 12 ? 'cornflowerblue' : '#79b58b';
                     if (tag === 'Возврат') {
-                        color = '#ff4d4f';
+                        color = '#e96865';
                     }
                     return (
                         <Tag color={color} key={tag}>
-                            {tag.toUpperCase()}
+                            {tag}
                         </Tag>
                     );
                 })}
@@ -143,7 +143,7 @@ function App() {
             <Row>
                 <Col span={24}>
                     <div className="header">
-                        <Popover placement="right" content="Menu">
+                        <Popover placement="right" content="Меню">
                             <div className="fakeToggle">
                                 <div className="toggle active">
                                     <MoreOutlined name="menu-outline" className="open" />
@@ -153,14 +153,19 @@ function App() {
                         </Popover>
                         <Row>
                             <Col flex="100px"/>
-                            <Col span={8}>
+                            <Col span={12}>
                                 <p style={{marginTop: "13px"}}>
                                     <span className="nameOne">ИАС</span>
                                     <span className="nameTwo">ХУЯС</span>
                                 </p>
                             </Col>
+                            <Col span={9}>
+                                <p style={{marginTop: "18px", textAlign: "right"}}>
+                                    <span className="phone"> +7 800 555-35-35</span>
+                                </p>
+                            </Col>
                         </Row>
-                        <Popover placement="bottom" content="Profile">
+                        <Popover placement="bottom" content="Профиль">
                             <div className="profile">
                                 <UserOutlined />
                             </div>
@@ -176,70 +181,70 @@ function App() {
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Home">
+                                    <Popover placement="right" content="Главная">
                                         <span className="icon"><HomeOutlined /></span>
                                     </Popover>
-                                    <span className="title">Home</span>
+                                    <span className="title">Главная</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Profile">
+                                    <Popover placement="right" content="Профиль">
                                         <span className="icon"><UserOutlined /></span>
                                     </Popover>
-                                    <span className="title">Profile</span>
+                                    <span className="title">Профиль</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Message">
+                                    <Popover placement="right" content="Сообщения">
                                         <span className="icon"><MessageOutlined /></span>
                                     </Popover>
-                                    <span className="title">Message</span>
+                                    <span className="title">Сообщения</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Setting">
+                                    <Popover placement="right" content="Настройки">
                                         <span className="icon"><SettingOutlined /></span>
                                     </Popover>
-                                    <span className="title">Setting</span>
+                                    <span className="title">Настройки</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Help">
+                                    <Popover placement="right" content="Помощь">
                                         <span className="icon"><QuestionCircleOutlined /></span>
                                     </Popover>
-                                    <span className="title">Help</span>
+                                    <span className="title">Помощь</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Password">
+                                    <Popover placement="right" content="Пароль">
                                         <span className="icon"><SafetyOutlined /></span>
                                     </Popover>
-                                    <span className="title">Password</span>
+                                    <span className="title">Пароль</span>
                                 </a>
                             </li>
                             <li className="list">
                                 <b></b>
                                 <b></b>
                                 <a href="#">
-                                    <Popover placement="right" content="Logout">
+                                    <Popover placement="right" content="Выйти">
                                         <span className="icon"><LogoutOutlined /></span>
                                     </Popover>
-                                    <span className="title">Logout</span>
+                                    <span className="title">Выйти</span>
                                 </a>
                             </li>
                         </ul>
@@ -254,19 +259,19 @@ function App() {
                                         </Col>
                                         <Col span={24}>
                                             <span className="label">Поиск</span>
-                                            <Search allowClear placeholder="search" onSearch={onSearch} enterButton />
+                                            <Search allowClear placeholder="поиск ..." onSearch={onSearch} enterButton />
                                         </Col>
                                         <Col span={12}>
                                             <span className="label">Фильтр 1</span>
-                                            <Input allowClear placeholder="filter" />
+                                            <Input allowClear placeholder="фильтр ..." />
                                         </Col>
                                         <Col span={12}>
                                             <span className="label">Фильтр 2</span>
-                                            <Input allowClear placeholder="filter" />
+                                            <Input allowClear placeholder="фильтр ..." />
                                         </Col>
                                         <Col span={12}>
                                             <span className="label">Выбор 1</span>
-                                            <Select allowClear placeholder="select" style={{ width: "100%" }} onChange={handleChange}>
+                                            <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
                                                 <Option value="lucy">222</Option>
                                                 <Option value="Yiminghe">333</Option>
@@ -274,7 +279,7 @@ function App() {
                                         </Col>
                                         <Col span={12}>
                                             <span className="label">Выбор 2</span>
-                                            <Select allowClear placeholder="select" style={{ width: "100%" }} onChange={handleChange}>
+                                            <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
                                                 <Option value="lucy">222</Option>
                                                 <Option value="Yiminghe">333</Option>
@@ -282,15 +287,15 @@ function App() {
                                         </Col>
                                         <Col span={6}>
                                             <span className="label">Дата 1</span>
-                                            <DatePicker allowClear style={{ width: "100%" }} placeholder="select date" onChange={onChange} />
+                                            <DatePicker allowClear style={{ width: "100%" }} placeholder="дата ..." onChange={onChange} />
                                         </Col>
                                         <Col span={6}>
                                             <span className="label">Дата 2</span>
-                                            <DatePicker allowClear style={{ width: "100%" }} placeholder="select date" onChange={onChange} />
+                                            <DatePicker allowClear style={{ width: "100%" }} placeholder="дата ..." onChange={onChange} />
                                         </Col>
                                         <Col span={12}>
                                             <span className="label">Выбор 3</span>
-                                            <Select allowClear placeholder="select" style={{ width: "100%" }} onChange={handleChange}>
+                                            <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
                                                 <Option value="lucy">222</Option>
                                                 <Option value="Yiminghe">333</Option>
