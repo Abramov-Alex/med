@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 body{
     min-height: 100vh;
     background: #fff;
+}
+.ant-back-top {
+    right: 55px;
+    bottom: 112px;
+    opacity: 0.9;
 }
 .navigation {
     position: fixed;
@@ -181,6 +186,11 @@ body{
     display:none;
     transition: all 0.6s ease-out;
 }
+.logo {
+    height: 45px;
+    margin-top: -15px;
+    margin-right: 17px;
+}
 .header {
     background: darkseagreen;
     border-radius: 10px 10px 10px 10px;
@@ -189,10 +199,28 @@ body{
     left: 20px;
     right: 20px;
     height: 75px;
-    z-index: 1;
+    z-index: 3;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.beforeHeader {
+    position: fixed;
+    top: 0;
+    height: 20px;
+    background: #fefefe;
+    width: calc(100% - 20px);
+    z-index: 3;
+}
+body:after {
+    opacity: 1;
+    content: "";
+    bottom: 0;
+    position: fixed;
+    height: 20px;
+    width: 100%;
+    z-index: 12;
+    background: linear-gradient(hsla(0,0%,100%,0),#fff);
 }
 .mainDiv {
     transition: padding-left 0.5s;
@@ -216,13 +244,27 @@ body{
     -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
 }
+.whiteDivMenu {
+    min-height: 55px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.ant-menu-horizontal {
+    line-height: 32px;
+    border-bottom: none;
+    font-weight: 500;
+}
 .ant-tag {
-    width: 120px;
+    width: 130px;
     text-align: center;
     border-radius: 4px;
     font-size: 12px;
-    font-weight: 600;
-    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
 }
 .phone {
     font-size: 27px;
@@ -265,15 +307,15 @@ body{
     font-size: 27px;
 }
 .label {
-    font-size: 12.5px;
-    color: #558d66;
+    font-size: 13px;
     font-weight: 500;
     font-family: 'Raleway', sans-serif;
+    color: #353a33;
 }
 .nameDiv {
     color: #427ce5;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0;
     font-family: 'Raleway', sans-serif;
 }
@@ -288,17 +330,34 @@ body{
 .ant-statistic-content {
     font-size: 21px;
 }
+.ant-tag-green {
+    color: #4b834f;
+    background: #dcf1e2;
+    border-color: #afd1b9;
+}
+.ant-tag-red {
+    color: #8f4848;
+    background: #fddad9;
+    border-color: #e5b2b1;
+}
+.ant-tag-blue {
+    color: #3d79b9;
+    background: #e6f7ff;
+    border-color: #9fc0d5;
+}
 .ant-btn-primary {
-    border-color: #79b58b;
-    background: #79b58b;
+    border-color: #afd1b9;
+    background: #dcf1e2;
+    color: #4b834f;
 }
 .ant-btn-primary:hover, .ant-btn-primary:focus {
     border-color: #8fbc8f;
     background: #8fbc8f;
 }
 .ant-btn-dangerous.ant-btn-primary {
-    background: #e96865;
-    border-color: #e96865;
+    background: #fddad9;
+    border-color: #e5b2b1;
+    color: #8f4848;
 }
 .ant-btn-dangerous.ant-btn-primary:hover, .ant-btn-dangerous.ant-btn-primary:focus {
     background: #ff7875;
@@ -306,14 +365,15 @@ body{
 }
 .ant-btn {
     border-radius: 6px;
-    text-shadow: 1px 1px 1px #878787;
-    font-weight: 600;
     font-size: 13px;
 }
 .ant-btn-link {
     font-size: 14px;
     font-weight: 400;
     text-shadow: none;
+}
+.anticon {
+    vertical-align: -0.15em;
 }
 .ant-input,
 .ant-picker,
@@ -329,4 +389,42 @@ body{
 }
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
     border-radius: 0 7px 7px 0;
+}
+.ant-drawer-close {
+    color: #ffffff;
+    font-size: 25px;
+    text-shadow: 1px 1px 1px #878787;
+}
+.ant-drawer-title {
+    text-align: center;
+    color: white;
+    font-size: 23px;
+    text-shadow: 1px 1px 1px #878787;
+}
+.ant-drawer-content {
+    background: white;
+}
+.ant-drawer-header {
+    height: 75px;
+    padding: 27px 24px;
+    color: white;
+    background: darkseagreen;
+    border-bottom: none;
+    margin-top: 20px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.whiteDivDrawer {
+    min-height: 365px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
+.ant-drawer-right.ant-drawer-open .ant-drawer-content-wrapper {
+    box-shadow: none;
 }

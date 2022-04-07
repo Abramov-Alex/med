@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button, Col, DatePicker, Input, Popover, Row, Select, Space, Statistic, Table, Tag} from "antd";
+import React, { useState } from 'react';
+import {BackTop, Button, Col, DatePicker, Drawer, Input, Menu, Popover, Row, Select, Statistic, Table, Tag} from "antd";
 import {
     HomeOutlined,
     BarsOutlined,
@@ -15,11 +15,19 @@ import {
     AppstoreOutlined,
     IssuesCloseOutlined,
     StopOutlined,
-    FolderOpenOutlined
+    FolderOpenOutlined,
+    CloseCircleOutlined,
+    SyncOutlined,
+    SnippetsTwoTone,
+    BookTwoTone,
+    FileTextTwoTone,
+    CopyTwoTone,
+    UpOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './resources/css/main.css';
 import './index.css';
+import logo from './resources/img/logo.png';
 
 const { Search } = Input;
 const { Option } = Select;
@@ -75,28 +83,13 @@ const columns = [
         title: 'Статус',
         key: 'status',
         dataIndex: 'status',
-        render: tags => (
-            <>
-                {tags.map(tag => {
-                    let color = tag.length > 12 ? 'cornflowerblue' : '#79b58b';
-                    if (tag === 'Возврат') {
-                        color = '#e96865';
-                    }
-                    return (
-                        <Tag color={color} key={tag}>
-                            {tag}
-                        </Tag>
-                    );
-                })}
-            </>
-        ),
     },
     {
         title: 'Действия',
         key: 'action',
         align: 'center',
         fixed: 'right',
-        width: 250,
+        width: 255,
         render: () => (
             <>
                 <Button type="link"><FolderOpenOutlined />Открыть</Button>
@@ -112,36 +105,150 @@ const data = [
         name: 'Наименование 1 ...',
         shortname: 'Организация 1 ...',
         number: '4682346134-234',
-        status: ['Сохранено'],
+        status:
+            [<>
+                <Tag icon={<CheckCircleOutlined/>} color="green">
+                    Сохранено
+                </Tag>
+            </>],
     },
     {
         key: '2',
         name: 'Наименование 2 ...',
         shortname: 'Организация 2 ...',
         number: '2347875563-764',
-        status: ['Возврат'],
+        status:
+            [<>
+                <Tag icon={<SyncOutlined spin />} color="blue">
+                    Редактируется
+                </Tag>
+            </>],
+    },
+    {
+        key: '2',
+        name: 'Наименование 3 ...',
+        shortname: 'Организация 3 ...',
+        number: '2347875563-764',
+        status:
+            [<>
+                <Tag icon={<CloseCircleOutlined/>} color="red">
+                    Возврат
+                </Tag>
+            </>],
+    },
+    {
+        key: '2',
+        name: 'Наименование 4 ...',
+        shortname: 'Организация 4 ...',
+        number: '2347875563-764',
+        status:
+            [<>
+                <Tag icon={<SyncOutlined spin />} color="blue">
+                    Редактируется
+                </Tag>
+            </>],
+    },
+    {
+        key: '2',
+        name: 'Наименование 5 ...',
+        shortname: 'Организация 5 ...',
+        number: '2347875563-764',
+        status:
+            [<>
+                <Tag icon={<SyncOutlined spin />} color="blue">
+                    Редактируется
+                </Tag>
+            </>],
     },
     {
         key: '3',
-        name: 'Наименование 3 ...',
-        shortname: 'Организация 3 ...',
-        number: '5724572145-355',
-        status: ['Редактируется'],
+        name: 'Наименование 6 ...',
+        shortname: 'Организация 6 ...',
+        number: '3473683568-234',
+        status:
+            [<>
+                <Tag icon={<CloseCircleOutlined/>} color="red">
+                    Возврат
+                </Tag>
+            </>],
     },
     {
         key: '4',
-        name: 'Наименование 4 ...',
-        shortname: 'Организация 4 ...',
+        name: 'Наименование 7 ...',
+        shortname: 'Организация 7 ...',
+        number: '9883493690-175',
+        status:
+            [<>
+                <Tag icon={<CheckCircleOutlined/>} color="green">
+                    Сохранено
+                </Tag>
+            </>],
+    },
+    {
+        key: '5',
+        name: 'Наименование 8 ...',
+        shortname: 'Организация 8 ...',
+        number: '9883493690-175',
+        status:
+            [<>
+                <Tag icon={<CheckCircleOutlined/>} color="green">
+                    Сохранено
+                </Tag>
+            </>],
+    },
+    {
+        key: '6',
+        name: 'Наименование 9 ...',
+        shortname: 'Организация 9 ...',
+        number: '1237904574-265',
+        status:
+            [<>
+                <Tag icon={<SyncOutlined spin />} color="blue">
+                    Редактируется
+                </Tag>
+            </>],
+    },
+    {
+        key: '3',
+        name: 'Наименование 10 ...',
+        shortname: 'Организация 10 ...',
         number: '3473683568-234',
-        status: ['Возврат'],
+        status:
+            [<>
+                <Tag icon={<CloseCircleOutlined/>} color="red">
+                    Возврат
+                </Tag>
+            </>],
     },
 ];
 
+const style = {
+    height: 70,
+    width: 70,
+    lineHeight: '67px',
+    borderRadius: 35,
+    backgroundColor: '#79b58b',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 30,
+};
+
 function App() {
+    const [visible, setVisible] = useState(false);
+    const showDrawer = () => {
+        setVisible(true);
+    };
+    const onClose = () => {
+        setVisible(false);
+    };
     return (
         <>
+            <BackTop>
+                <div style={style}><UpOutlined /></div>
+            </BackTop>
             <Row>
                 <Col span={24}>
+                    <div className="beforeHeader"/>
                     <div className="header">
                         <Popover placement="right" content="Меню">
                             <div className="fakeToggle">
@@ -152,20 +259,24 @@ function App() {
                             </div>
                         </Popover>
                         <Row>
-                            <Col flex="100px"/>
-                            <Col span={12}>
-                                <p style={{marginTop: "13px"}}>
-                                    <span className="nameOne">ИАС</span>
-                                    <span className="nameTwo">ХУЯС</span>
-                                </p>
+                            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                                <div style={{ padding: '0 0 0 100px'}}>
+                                    <p style={{marginTop: "13px"}}>
+                                        <img src={logo} className="logo" alt="?"/>
+                                        <span className="nameOne">ИАС</span>
+                                        <span className="nameTwo">ХУЯС</span>
+                                    </p>
+                                </div>
                             </Col>
-                            <Col span={9}>
-                                <p style={{marginTop: "18px", textAlign: "right"}}>
-                                    <span className="phone"> +7 800 555-35-35</span>
-                                </p>
+                            <Col xs={0} sm={0} md={12} lg={12} xl={12}>
+                                <div style={{ padding: '0 100px 0 0' }}>
+                                    <p style={{marginTop: "18px", textAlign: "right"}}>
+                                        <span className="phone"> +7 800 555-35-35</span>
+                                    </p>
+                                </div>
                             </Col>
                         </Row>
-                        <Popover placement="bottom" content="Профиль">
+                        <Popover placement="bottom" content="Профиль" onClick={showDrawer}>
                             <div className="profile">
                                 <UserOutlined />
                             </div>
@@ -251,7 +362,25 @@ function App() {
                     </div>
                     <div className="mainDiv accordion">
                         <Row gutter={[20,20]}>
-                            <Col span={12}>
+                            <Col span={24}>
+                                <div className="whiteDivMenu">
+                                    <Menu selectedKeys="1" mode="horizontal">
+                                        <Menu.Item key="1" icon={<SnippetsTwoTone />}>
+                                            Раздел один
+                                        </Menu.Item>
+                                        <Menu.Item key="2" icon={<BookTwoTone />}>
+                                            Раздел два
+                                        </Menu.Item>
+                                        <Menu.Item key="3" icon={<FileTextTwoTone />}>
+                                            Раздел три
+                                        </Menu.Item>
+                                        <Menu.Item key="4" icon={<CopyTwoTone />}>
+                                            Раздел четыре
+                                        </Menu.Item>
+                                    </Menu>
+                                </div>
+                            </Col>
+                            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
                                 <div className="whiteDiv">
                                     <Row gutter={[20,10]}>
                                         <Col span={24}>
@@ -261,15 +390,15 @@ function App() {
                                             <span className="label">Поиск</span>
                                             <Search allowClear placeholder="поиск ..." onSearch={onSearch} enterButton />
                                         </Col>
-                                        <Col span={12}>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                                             <span className="label">Фильтр 1</span>
                                             <Input allowClear placeholder="фильтр ..." />
                                         </Col>
-                                        <Col span={12}>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                                             <span className="label">Фильтр 2</span>
                                             <Input allowClear placeholder="фильтр ..." />
                                         </Col>
-                                        <Col span={12}>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                                             <span className="label">Выбор 1</span>
                                             <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
@@ -277,7 +406,7 @@ function App() {
                                                 <Option value="Yiminghe">333</Option>
                                             </Select>
                                         </Col>
-                                        <Col span={12}>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                                             <span className="label">Выбор 2</span>
                                             <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
@@ -285,15 +414,15 @@ function App() {
                                                 <Option value="Yiminghe">333</Option>
                                             </Select>
                                         </Col>
-                                        <Col span={6}>
+                                        <Col xs={24} sm={12} md={6} lg={6} xl={6}>
                                             <span className="label">Дата 1</span>
                                             <DatePicker allowClear style={{ width: "100%" }} placeholder="дата ..." onChange={onChange} />
                                         </Col>
-                                        <Col span={6}>
+                                        <Col xs={24} sm={12} md={6} lg={6} xl={6}>
                                             <span className="label">Дата 2</span>
                                             <DatePicker allowClear style={{ width: "100%" }} placeholder="дата ..." onChange={onChange} />
                                         </Col>
-                                        <Col span={12}>
+                                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                                             <span className="label">Выбор 3</span>
                                             <Select allowClear placeholder="выбор ..." style={{ width: "100%" }} onChange={handleChange}>
                                                 <Option value="jack">111</Option>
@@ -301,13 +430,13 @@ function App() {
                                                 <Option value="Yiminghe">333</Option>
                                             </Select>
                                         </Col>
-                                        <Col span={6}>
+                                        <Col xs={24} sm={12} md={6} lg={6} xl={6}>
                                             <p/>
                                             <Button style={{width: "100%"}} type="primary" icon={<CheckCircleOutlined />}>
                                                 Применить
                                             </Button>
                                         </Col>
-                                        <Col span={6}>
+                                        <Col xs={24} sm={12} md={6} lg={6} xl={6}>
                                             <p/>
                                             <Button style={{width: "100%"}} type="primary" danger icon={<DeleteOutlined />}>
                                                 Очистить
@@ -316,13 +445,13 @@ function App() {
                                     </Row>
                                 </div>
                             </Col>
-                            <Col span={12}>
+                            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
                                 <div className="whiteDiv">
                                     <Row gutter={[20,10]}>
                                         <Col span={24}>
                                             <p className="nameDiv">Статистика</p>
                                         </Col>
-                                        <Col span={6} style={{textAlign: "center"}}>
+                                        <Col xs={12} sm={12} md={6} lg={6} xl={6} style={{textAlign: "center"}}>
                                             <Statistic
                                                 title="Всего карт"
                                                 value={248}
@@ -331,7 +460,7 @@ function App() {
                                                 suffix="шт."
                                             />
                                         </Col>
-                                        <Col span={6} style={{textAlign: "center"}}>
+                                        <Col xs={12} sm={12} md={6} lg={6} xl={6} style={{textAlign: "center"}}>
                                             <Statistic
                                                 title="Подтверждено"
                                                 value={172}
@@ -341,7 +470,7 @@ function App() {
                                                 suffix="шт."
                                             />
                                         </Col>
-                                        <Col span={6} style={{textAlign: "center"}}>
+                                        <Col xs={12} sm={12} md={6} lg={6} xl={6} style={{textAlign: "center"}}>
                                             <Statistic
                                                 title="Редактируется"
                                                 value={51}
@@ -351,7 +480,7 @@ function App() {
                                                 suffix="шт."
                                             />
                                         </Col>
-                                        <Col span={6} style={{textAlign: "center"}}>
+                                        <Col xs={12} sm={12} md={6} lg={6} xl={6} style={{textAlign: "center"}}>
                                             <Statistic
                                                 title="Отклонено"
                                                 value={25}
@@ -373,6 +502,22 @@ function App() {
                     </div>
                 </Col>
             </Row>
+            <Drawer width="50%" title="Профиль пользователя" placement="right" onClose={onClose} visible={visible}>
+                <Row gutter={[20,20]}>
+                    <Col span={8}>
+                        <div className="whiteDivDrawer">
+                        </div>
+                    </Col>
+                    <Col span={16}>
+                        <div className="whiteDivDrawer">
+                        </div>
+                    </Col>
+                    <Col span={24}>
+                        <div className="whiteDivDrawer">
+                        </div>
+                    </Col>
+                </Row>
+            </Drawer>
         </>
   );
 }
