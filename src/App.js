@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
-import {BackTop, Button, Col, DatePicker, Drawer, Input, Menu, Popover, Row, Select, Statistic, Table, Tag} from "antd";
+import {
+    Avatar,
+    BackTop,
+    Button,
+    Col,
+    DatePicker,
+    Drawer,
+    Input,
+    Menu,
+    Popover,
+    Row,
+    Select,
+    Statistic,
+    Table,
+    Tag
+} from "antd";
 import {
     HomeOutlined,
     BarsOutlined,
@@ -22,7 +37,9 @@ import {
     BookTwoTone,
     FileTextTwoTone,
     CopyTwoTone,
-    UpOutlined
+    UpOutlined,
+    CameraOutlined,
+    FileSearchOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './resources/css/main.css';
@@ -505,15 +522,29 @@ function App() {
             <Drawer width="50%" title="Профиль пользователя" placement="right" onClose={onClose} visible={visible}>
                 <Row gutter={[20,20]}>
                     <Col span={8}>
-                        <div className="whiteDivDrawer">
+                        <div className="whiteDivDrawer" style={{textAlign: "center"}}>
+                            <Avatar size={170} icon={<UserOutlined />} />
+                            <br/><br/>
+                            <p className="namePerson">Абрамов Алескей Анатольевич</p>
+                            <Popover placement="top" content="Фото">
+                                <Button size="large" type="primary" shape="circle" icon={<CameraOutlined />} style={{marginRight: 10}} />
+                            </Popover>
+                            <Popover placement="top" content="Настройки">
+                                 <Button size="large" type="primary" shape="circle" icon={<SettingOutlined />} style={{marginRight: 10}} />
+                            </Popover>
+                            <Popover placement="top" content="Инструкции">
+                                <Button size="large" type="primary" shape="circle" icon={<FileSearchOutlined />} />
+                            </Popover>
                         </div>
                     </Col>
                     <Col span={16}>
                         <div className="whiteDivDrawer">
+                            <p className="nameDiv">Персональная информация</p>
                         </div>
                     </Col>
                     <Col span={24}>
                         <div className="whiteDivDrawer">
+                            <p className="nameDiv">Рабочая информация</p>
                         </div>
                     </Col>
                 </Row>

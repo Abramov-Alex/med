@@ -27,7 +27,7 @@ body{
     box-sizing: initial;
     border-left: 5px solid cornflowerblue;
     background: cornflowerblue;
-    transition: width 0.5s;
+    transition: width 0.35s;
     overflow-x: hidden;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
@@ -223,7 +223,7 @@ body:after {
     background: linear-gradient(hsla(0,0%,100%,0),#fff);
 }
 .mainDiv {
-    transition: padding-left 0.5s;
+    transition: padding-left 0.35s;
     padding-left: 295px;
     min-height: calc(100vh - 125px);
     width: 100%;
@@ -231,7 +231,7 @@ body:after {
     padding-right: 20px;
 }
 .mainDiv.accordion {
-    transition: padding-left 0.5s;
+    transition: padding-left 0.35s;
     padding-left: 120px;
 }
 .whiteDiv {
@@ -415,6 +415,17 @@ body:after {
     -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
 }
+.ant-drawer-close {
+    padding: 24px;
+    margin-left: -24px;
+    background: #79b58b;
+    transition: all 0.3s ease-out;
+}
+.ant-drawer-close:hover, .ant-drawer-close:focus {
+    color: white;
+    background: #68a77b;
+    transition: all 0.3s ease-out;
+}
 .whiteDivDrawer {
     min-height: 365px;
     border-radius: 10px;
@@ -427,4 +438,7 @@ body:after {
 }
 .ant-drawer-right.ant-drawer-open .ant-drawer-content-wrapper {
     box-shadow: none;
+}
+.namePerson {
+    font-size: 18px;
 }
