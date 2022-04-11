@@ -244,6 +244,15 @@ body:after {
     -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
 }
+.logindiv {
+    margin-top: 120px;
+    border-radius: 10px;
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 0px rgba(34, 60, 80, 0.2);
+}
 .whiteDivMenu {
     min-height: 55px;
     border-radius: 10px;
@@ -363,6 +372,20 @@ body:after {
     background: #ff7875;
     border-color: #ff7875;
 }
+.ant-btn-default {
+    color: #4c87c5;
+    background: #e6f7ff;
+    border-color: #b5d7ed;
+}
+.ant-btn-default:hover, .ant-btn-default:focus {
+    color: white;
+    background: #5390d1;
+    border-color: #5390d1;
+}
+.ant-btn-lg {
+    padding: 10px 15px;
+    font-weight: 700;
+}
 .ant-btn {
     border-radius: 6px;
     font-size: 13px;
@@ -441,4 +464,7 @@ body:after {
 }
 .namePerson {
     font-size: 18px;
+}
+.g2-html-annotation {
+    left: 50% !important;
 }
