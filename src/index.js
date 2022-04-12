@@ -3,6 +3,7 @@ import { ConfigProvider } from 'antd';
 import 'moment/locale/ru';
 import locale from 'antd/lib/locale/ru_RU';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -10,7 +11,9 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
     <React.StrictMode>
         <ConfigProvider locale={locale}>
-            <App />
+            <Router>
+                <App />
+            </Router>
         </ConfigProvider>
     </React.StrictMode>,
     document.getElementById('root')

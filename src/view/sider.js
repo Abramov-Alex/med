@@ -1,4 +1,5 @@
 import {Popover} from "antd";
+import {Link} from "react-router-dom";
 import {
     HomeOutlined,
     LogoutOutlined,
@@ -78,12 +79,12 @@ export default function Sider() {
                     <li className="list">
                         <b></b>
                         <b></b>
-                        <a href="#">
+                        <Link to="/">
                             <Popover placement="right" content="Выйти">
                                 <span className="icon"><LogoutOutlined /></span>
                             </Popover>
                             <span className="title">Выйти</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
